@@ -1,7 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Login extends JFrame {
+public class Login extends JFrame  implements ActionListener {
+    JButton login_button,cancel_button;
     Login(){
         getContentPane().setBackground(Color.WHITE);
 
@@ -28,18 +31,20 @@ public class Login extends JFrame {
         add(text_password);
 
         // login button design.
-        JButton login_button = new JButton("Login");
+             login_button = new JButton("Login");
         login_button.setBounds(40,140,120,30);
         login_button.setBackground(Color.BLACK);
         login_button.setForeground(Color.WHITE);
+        login_button.addActionListener(this);
         login_button.setFont(new Font("Tahoma",Font.BOLD,15));
         add(login_button);
 
         // cancel button design.
-        JButton cancel_button = new JButton("Cancel");
+              cancel_button = new JButton("Cancel");
         cancel_button.setBounds(180,140,120,30);
         cancel_button.setBackground(Color.BLACK);
         cancel_button.setForeground(Color.WHITE);
+        cancel_button.addActionListener(this);
         cancel_button.setFont(new Font("Tahoma",Font.BOLD,15));
         add(cancel_button);
 
@@ -55,6 +60,13 @@ public class Login extends JFrame {
         setSize(600,300);
         setLocation(500,250);
         setVisible(true);
+    }
+    public void actionPerformed(ActionEvent e){
+        if(e.getSource()==login_button){
+
+        }else if(e.getSource()==cancel_button){
+            setVisible(false);
+        }
     }
     public static void main(String[] args) {
         new Login();
