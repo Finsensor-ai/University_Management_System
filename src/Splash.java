@@ -33,6 +33,8 @@ public class Splash extends JFrame implements Runnable{
             setVisible(false);
 
             // next Frame open.
+            // login frame open.
+            new Login();
         }catch (Exception e){}
     }
     public static void main(String[] args) {
