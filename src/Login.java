@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 public class Login extends JFrame  implements ActionListener {
     JButton login_button,cancel_button;
+    JTextField text_username,text_password;
     Login(){
         getContentPane().setBackground(Color.WHITE);
 
@@ -16,7 +17,7 @@ public class Login extends JFrame  implements ActionListener {
         add(Input_username);
 
         // design text file for username.
-        JTextField text_username = new JTextField();
+             text_username = new JTextField();
         text_username.setBounds(150,20,150,20);
         add(text_username);
 
@@ -26,7 +27,7 @@ public class Login extends JFrame  implements ActionListener {
         add(Input_password);
 
         // design text file for password.
-        JTextField text_password = new JPasswordField();
+            text_password = new JPasswordField();
         text_password.setBounds(150,70,150,20);
         add(text_password);
 
@@ -63,7 +64,17 @@ public class Login extends JFrame  implements ActionListener {
     }
     public void actionPerformed(ActionEvent e){
         if(e.getSource()==login_button){
+            String username = text_username.getText();
+            String password = text_password.getText();
 
+            // mysql query
+            String query = "select * from login where username='"+username+"' and password='"+password+"'";
+
+            try{
+
+            }catch(Exception e){
+                
+            }
         }else if(e.getSource()==cancel_button){
             setVisible(false);
         }
