@@ -1,7 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Project extends JFrame {
+public class Project extends JFrame implements ActionListener {
     Project(){
         setSize(1540,850);
 
@@ -123,10 +125,12 @@ public class Project extends JFrame {
         // nav bar lists items (menu items).
         JMenuItem notepad = new JMenuItem("Notepad");
         notepad.setBackground(Color.WHITE);
+        notepad.addActionListener(this);
         utility.add(notepad);
 
         JMenuItem calc = new JMenuItem("Calculator");
         calc.setBackground(Color.WHITE);
+        calc.addActionListener(this);
         utility.add(calc);
 
         // Exit
@@ -137,6 +141,7 @@ public class Project extends JFrame {
 
         // nav bar lists items (menu items).
         JMenuItem ex = new JMenuItem("Exit");
+        ex.addActionListener(this);
         ex.setBackground(Color.WHITE);
         exit.add(ex);
 
@@ -148,6 +153,23 @@ public class Project extends JFrame {
 
         // last statement.
         setVisible(true);
+    }
+
+    // override abstract method.
+    public void actionPerformed(ActionEvent e){
+        String msg = e.getActionCommand();
+        if(msg.equals("Exit")){
+            setVisible(false);
+        }else if(msg.equals("Calculator")){
+            try{
+                Runtime.getRuntime().exec("calc.exe");
+            }catch(Exception erorr) {
+            }
+        }else if(msg.equals("Notepad")){
+            try{
+                Runtime.getRuntime().exec("notepad.exe");
+            }catch (Exception error){}
+        }
     }
     public static void main(String[] args) {
         new Project();
