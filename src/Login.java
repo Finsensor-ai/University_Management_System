@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 
 public class Login extends JFrame  implements ActionListener {
     JButton login_button,cancel_button;
@@ -71,9 +72,19 @@ public class Login extends JFrame  implements ActionListener {
             String query = "select * from login where username='"+username+"' and password='"+password+"'";
 
             try{
+            Conn c = new Conn();
+                ResultSet res = c.s.executeQuery(query);
+                if(res.next()){
+                    setVisible(false);
+                    // next frame show.
+                    new Project();
+                }else{
+                    JOptionPane.showMessageDialog(null,"Invalid username or passsword");
+                    setVisible(false);
+                }
 
-            }catch(Exception e){
-                
+            }catch(Exception error){
+                error.printStackTrace();
             }
         }else if(e.getSource()==cancel_button){
             setVisible(false);
