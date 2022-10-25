@@ -82,7 +82,7 @@ public class Login extends JFrame  implements ActionListener {
                     JOptionPane.showMessageDialog(null,"Invalid username or passsword");
                     setVisible(false);
                 }
-
+                c.s.close(); // close connection.
             }catch(Exception error){
                 error.printStackTrace();
             }
