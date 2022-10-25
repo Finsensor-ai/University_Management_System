@@ -208,12 +208,11 @@ public class AddStudent extends JFrame implements ActionListener {
             String course = (String) Combo_Box_course.getSelectedItem();
             String branch = (String) Combo_Box_Branch.getSelectedItem();
             try{
-                String query = "insert into student values('"+name+"','"+fname+"','"+rollno+"','"+dob+"','"+address+"','"+phone+"','"+email+"','"+x+"','"+xii+"','"+aadhar+"','"+course+"','"+branch+"',)";
-                Conn c = new Conn();
-                c.s.executeUpdate(query);
+                String query = "insert into student values('"+name+"','"+fname+"','"+rollno+"','"+dob+"','"+address+"','"+phone+"','"+email+"','"+x+"','"+xii+"','"+aadhar+"','"+course+"','"+branch+"')";
+                Conn con = new Conn();
+                con.s.executeUpdate(query);
                 JOptionPane.showMessageDialog(null,"Student Details Inserted Successfully");
                 setVisible(false);
-                
             }catch (Exception error){
                 error.printStackTrace();
             }
