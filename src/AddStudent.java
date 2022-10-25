@@ -1,11 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Random;
 import com.toedter.calendar.JDateChooser;
-public class AddStudent extends JFrame {
+public class AddStudent extends JFrame implements ActionListener {
     JTextField Input_name,Input_Father_name,Input_Address,Input_Phone,Input_Email,Input_X,Input_XII,Input_Aadhar;
     JLabel roll_Number_Label;
-
+    JComboBox Combo_Box_course,Combo_Box_Branch;
+    JButton submit_button,cancel_button;
     JDateChooser date_DOB_Chooser;
     Random random = new Random();
     long first_4 = Math.abs((random.nextLong()%9000L)+1000L);
@@ -144,10 +147,80 @@ public class AddStudent extends JFrame {
         add(course_Label);
 
 
+        // drop down list.
+
+        String course[] = {"BCA","MCA","B.Tech","M.Tech","Bsc","MSC","MBA","MCom","MA","BA"};
+        Combo_Box_course = new JComboBox(course);
+        Combo_Box_course.setBounds(200,400,150,30);
+        Combo_Box_course.setBackground(Color.WHITE);
+        add(Combo_Box_course);
+
+
+        // Branch
+        JLabel Branch_Label = new JLabel("Branch");
+        Branch_Label.setBounds(400,400,200,30);
+        Branch_Label.setFont(new Font("serif",Font.BOLD,20));
+        add(Branch_Label);
+
+
+        // drop down list.
+
+        String branch[] = {"Computer Science","Electronics","Mechanical","Civil","IT","MSC","MBA","MCom","MA","BA"};
+        Combo_Box_Branch = new JComboBox(branch);
+        Combo_Box_Branch.setBounds(600,400,150,30);
+        Combo_Box_Branch.setBackground(Color.WHITE);
+        add(Combo_Box_Branch);
+
+        // Submit Button
+        submit_button = new JButton("Submit");
+        submit_button.setBounds(250,550,120,30);
+        submit_button.setBackground(Color.BLACK);
+        submit_button.setForeground(Color.WHITE);
+        submit_button.addActionListener(this);
+        submit_button.setFont(new Font("Tahoma",Font.BOLD,15));
+        add(submit_button);
+
+        // cancel button design.
+        cancel_button = new JButton("Cancel");
+        cancel_button.setBounds(450,550,120,30);
+        cancel_button.setBackground(Color.BLACK);
+        cancel_button.setForeground(Color.WHITE);
+        cancel_button.addActionListener(this);
+        cancel_button.setFont(new Font("Tahoma",Font.BOLD,15));
+        add(cancel_button);
+
+
         //  last statement
         setVisible(true);
     }
-
+    public void actionPerformed(ActionEvent e){
+        if(e.getSource()==submit_button){
+            String name = Input_name.getText();
+            String fname = Input_Father_name.getText();
+            String rollno= roll_Number_Label.getText();
+            String dob = ((JTextField) date_DOB_Chooser.getDateEditor().getUiComponent()).getText();
+            String address = Input_Address.getText();
+            String phone = Input_Phone.getText();
+            String email= Input_Email.getText();
+            String x = Input_X.getText();
+            String xii = Input_XII.getText();
+            String aadhar = Input_name.getText();
+            String course = (String) Combo_Box_course.getSelectedItem();
+            String branch = (String) Combo_Box_Branch.getSelectedItem();
+            try{
+                String query = "insert into student values('"+name+"','"+fname+"','"+rollno+"','"+dob+"','"+address+"','"+phone+"','"+email+"','"+x+"','"+xii+"','"+aadhar+"','"+course+"','"+branch+"',)";
+                Conn c = new Conn();
+                c.s.executeUpdate(query);
+                JOptionPane.showMessageDialog(null,"Student Details Inserted Successfully");
+                setVisible(false);
+                
+            }catch (Exception error){
+                error.printStackTrace();
+            }
+        }else{
+            setVisible(false);
+        }
+    }
     public static void main(String[] args) {
         new AddStudent();
     }
