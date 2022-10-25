@@ -18,17 +18,19 @@ public class Project extends JFrame implements ActionListener {
         JMenuBar nav = new JMenuBar();
 
         // new information
-        JMenu information = new JMenu("Information");
+        JMenu information = new JMenu("New Information");
         information.setForeground(Color.BLUE);
         nav.add(information);
 
         // nav bar lists items (menu items).
-        JMenuItem faculty_Info = new JMenuItem("Faculity Information");
+        JMenuItem faculty_Info = new JMenuItem("New Faculity Information");
         faculty_Info.setBackground(Color.WHITE);
+        faculty_Info.addActionListener(this);
         information.add(faculty_Info);
 
-        JMenuItem student_Info = new JMenuItem("Student Information");
+        JMenuItem student_Info = new JMenuItem("New Student Information");
         student_Info.setBackground(Color.WHITE);
+        student_Info.addActionListener(this);
         information.add(student_Info);
 
         // Details
@@ -169,6 +171,10 @@ public class Project extends JFrame implements ActionListener {
             try{
                 Runtime.getRuntime().exec("notepad.exe");
             }catch (Exception error){}
+        }else if(msg.equals("New Faculity Information")){
+            new AddTeacher();
+        }else if(msg.equals("New Student Information")){
+            new AddStudent();
         }
     }
     public static void main(String[] args) {
