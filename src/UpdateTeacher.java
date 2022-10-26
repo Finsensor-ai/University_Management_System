@@ -1,0 +1,298 @@
+import net.proteanit.sql.DbUtils;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.sql.ResultSet;
+public class UpdateTeacher extends JFrame implements ActionListener {
+    JTextField Input_Course,Input_Address,Input_Phone,Input_Email,Input_Branch;
+    JLabel label_Employee_ID;
+    JButton submit_button,cancel_button;
+    Choice employee_ID;
+    UpdateTeacher(){
+        setSize(900,650);
+        setLocation(350,50);
+        setLayout(null);
+
+        JLabel heading = new JLabel("Update Teacher Details");
+        heading.setBounds(50,10,500,50);
+        heading.setFont(new Font("Tahoma",Font.ITALIC,35));
+        add(heading);
+
+        // student roll no.
+        JLabel roll_Number_label = new JLabel("Select Employee Id");
+        roll_Number_label.setBounds(50,100,200,20);
+        roll_Number_label.setFont(new Font("Serif",Font.PLAIN,20));
+        add(roll_Number_label);
+
+        employee_ID = new Choice();
+        employee_ID.setBounds(250,100,200,20);
+        add(employee_ID);
+
+        // get roll no. from backend(mysql);
+        try{
+            Conn cn = new Conn();
+            ResultSet res = cn.s.executeQuery("select * from teacher");
+            while(res.next()){
+                employee_ID.add(res.getString("empId"));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+
+        // name label
+        JLabel name_Label = new JLabel("Name");
+        name_Label.setBounds(50,150,100,30);
+        name_Label.setFont(new Font("serif",Font.BOLD,20));
+        add(name_Label);
+
+
+        // name text field.
+
+        JLabel Input_name = new JLabel();
+        Input_name.setBounds(200,150,150,30);
+        Input_name.setFont(new Font("Tahoma",Font.PLAIN,18));
+        add(Input_name);
+
+
+        // father name label.
+        JLabel father_name = new JLabel("Father's Name");
+        father_name.setBounds(400,150,200,30);
+        father_name.setFont(new Font("serif",Font.BOLD,20));
+        add(father_name);
+
+        // name text field.
+        JLabel Input_Father_name = new JLabel();
+        Input_Father_name.setBounds(600,150,150,30);
+        Input_Father_name.setFont(new Font("Tahoma",Font.PLAIN,18));
+        add(Input_Father_name);
+
+
+        // roll number
+        JLabel roll_Number = new JLabel("Employee Id");
+        roll_Number.setBounds(50,200,200,30);
+        roll_Number.setFont(new Font("serif",Font.BOLD,20));
+        add(roll_Number);
+
+        // random roll number Generated.
+        label_Employee_ID = new JLabel();
+        label_Employee_ID.setBounds(200,200,200,30);
+        label_Employee_ID.setFont(new Font("Tahoma",Font.PLAIN,18));
+        add(label_Employee_ID);
+
+        // date of birth
+        JLabel DOB = new JLabel("Date of Birth");
+        DOB.setBounds(400,200,200,30);
+        DOB.setFont(new Font("serif",Font.BOLD,20));
+        add(DOB);
+
+        JLabel date_DOB_Chooser = new JLabel();
+        date_DOB_Chooser.setBounds(600,200,150,30);
+        date_DOB_Chooser.setFont(new Font("Tahoma",Font.PLAIN,18));
+        add(date_DOB_Chooser);
+
+
+        //  Address
+        JLabel address_Label = new JLabel("Address");
+        address_Label.setBounds(50,250,200,30);
+        address_Label.setFont(new Font("serif",Font.BOLD,20));
+        add(address_Label);
+
+        // name text field.
+        Input_Address = new JTextField();
+        Input_Address.setBounds(200,250,150,30);
+        add(Input_Address);
+
+        // Phone
+        JLabel phone_Label = new JLabel("Phone");
+        phone_Label.setBounds(400,250,200,30);
+        phone_Label.setFont(new Font("serif",Font.BOLD,20));
+        add(phone_Label);
+
+        // name text field.
+        Input_Phone = new JTextField();
+        Input_Phone.setBounds(600,250,150,30);
+        add(Input_Phone);
+
+        // Email Id
+
+        JLabel email_Label = new JLabel("Email Id");
+        email_Label.setBounds(50,300,200,30);
+        email_Label.setFont(new Font("serif",Font.BOLD,20));
+        add(email_Label);
+
+        // name text field.
+        Input_Email = new JTextField();
+        Input_Email.setBounds(200,300,150,30);
+        add(Input_Email);
+
+        // Class X %
+        JLabel X_Label = new JLabel("Class X (%)");
+        X_Label.setBounds(400,300,200,30);
+        X_Label.setFont(new Font("serif",Font.BOLD,20));
+        add(X_Label);
+
+        // name text field.
+        JLabel Input_X = new JLabel();
+        Input_X.setBounds(600,300,150,30);
+        Input_X.setFont(new Font("Tahoma",Font.PLAIN,18));
+        add(Input_X);
+
+
+        // Class xii %
+        JLabel XII_Label = new JLabel("Class XII (%)");
+        XII_Label.setBounds(50,350,200,30);
+        XII_Label.setFont(new Font("serif",Font.BOLD,20));
+        add(XII_Label);
+
+        // name text field.
+        JLabel Input_XII = new JLabel();
+        Input_XII.setBounds(200,350,150,30);
+        Input_XII.setFont(new Font("Tahoma",Font.PLAIN,18));
+        add(Input_XII);
+
+
+        // Aadhar Number
+        JLabel aadhar_Label = new JLabel("Aadhar Number");
+        aadhar_Label.setBounds(400,350,200,30);
+        aadhar_Label.setFont(new Font("serif",Font.BOLD,20));
+        add(aadhar_Label);
+
+        // name text field.
+        JLabel Input_Aadhar = new JLabel();
+        Input_Aadhar.setBounds(600,350,150,30);
+        Input_Aadhar.setFont(new Font("Tahoma",Font.PLAIN,18));
+        add(Input_Aadhar);
+
+        // Course
+        JLabel course_Label = new JLabel("Education");
+        course_Label.setBounds(50,400,200,30);
+        course_Label.setFont(new Font("serif",Font.BOLD,20));
+        add(course_Label);
+
+
+        // drop down list.
+
+        Input_Course = new JTextField();
+        Input_Course.setBounds(200,400,150,30);
+        add(Input_Course);
+
+
+        // Branch
+        JLabel Branch_Label = new JLabel("Department");
+        Branch_Label.setBounds(400,400,200,30);
+        Branch_Label.setFont(new Font("serif",Font.BOLD,20));
+        add(Branch_Label);
+
+
+        // drop down list.
+
+        Input_Branch = new JTextField();
+        Input_Branch.setBounds(600,400,150,30);
+        add(Input_Branch);
+
+        // mysql data fetch
+
+        try{
+            Conn cn = new Conn();
+            String query = "select * from teacher where empId ='"+employee_ID.getSelectedItem()+"'";
+            ResultSet res = cn.s.executeQuery(query);
+            while(res.next()){
+                Input_name.setText(res.getString("name"));
+                Input_Father_name.setText(res.getString("fname"));
+                date_DOB_Chooser.setText(res.getString("dob"));
+                Input_Address.setText(res.getString("address"));
+                Input_Phone.setText(res.getString("phone"));
+                Input_Email.setText(res.getString("email"));
+                Input_X.setText(res.getString("class_x"));
+                Input_XII.setText(res.getString("class_xii"));
+                Input_Aadhar.setText(res.getString("aadhar"));
+                label_Employee_ID.setText(res.getString("empId"));
+                Input_Course.setText(res.getString("education"));
+                Input_Branch.setText(res.getString("department"));
+
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        // event lister on Items List. (Drop Down Menu).
+        employee_ID.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                try{
+                    Conn cn = new Conn();
+                    String query = "select * from teacher where empId ='"+employee_ID.getSelectedItem()+"'";
+                    ResultSet res = cn.s.executeQuery(query);
+                    while(res.next()){
+                        Input_name.setText(res.getString("name"));
+                        Input_Father_name.setText(res.getString("fname"));
+                        date_DOB_Chooser.setText(res.getString("dob"));
+                        Input_Address.setText(res.getString("address"));
+                        Input_Phone.setText(res.getString("phone"));
+                        Input_Email.setText(res.getString("email"));
+                        Input_X.setText(res.getString("class_x"));
+                        Input_XII.setText(res.getString("class_xii"));
+                        Input_Aadhar.setText(res.getString("aadhar"));
+                        label_Employee_ID.setText(res.getString("empId"));
+                        Input_Course.setText(res.getString("education"));
+                        Input_Branch.setText(res.getString("department"));
+
+                    }
+                }catch(Exception error){
+                    error.printStackTrace();
+                }
+            }
+        });
+
+        // Submit Button
+        submit_button = new JButton("Update");
+        submit_button.setBounds(250,500,120,30);
+        submit_button.setBackground(Color.BLACK);
+        submit_button.setForeground(Color.WHITE);
+        submit_button.addActionListener(this);
+        submit_button.setFont(new Font("Tahoma",Font.BOLD,15));
+        add(submit_button);
+
+        // cancel button design.
+        cancel_button = new JButton("Cancel");
+        cancel_button.setBounds(450,500,120,30);
+        cancel_button.setBackground(Color.BLACK);
+        cancel_button.setForeground(Color.WHITE);
+        cancel_button.addActionListener(this);
+        cancel_button.setFont(new Font("Tahoma",Font.BOLD,15));
+        add(cancel_button);
+
+
+        //  last statement
+        setVisible(true);
+    }
+    public void actionPerformed(ActionEvent e){
+        if(e.getSource()==submit_button){
+            String empId= label_Employee_ID.getText();
+            String address = Input_Address.getText();
+            String phone = Input_Phone.getText();
+            String email = Input_Email.getText();
+            String course = Input_Course.getText();
+            String branch = Input_Branch.getText();
+            try{
+                String query = "update teacher set address='"+address+"', phone='"+phone+"',email='"+email+"',education='"+course+"',department='"+branch+"' where empId='"+empId+"'";
+                Conn con = new Conn();
+                con.s.executeUpdate(query);
+                JOptionPane.showMessageDialog(null,"Teacher Details Updated Successfully");
+                setVisible(false);
+            }catch (Exception error){
+                error.printStackTrace();
+            }
+        }else{
+            setVisible(false);
+        }
+    }
+    public static void main(String[] args) {
+        new UpdateTeacher();
+    }
+}
