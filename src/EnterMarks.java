@@ -1,11 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 
-public class EnterMarks extends JFrame {
+public class EnterMarks extends JFrame implements ActionListener {
     Choice choice_roll_no;
     JComboBox combo_Semester;
     JTextField Input_subject_1,Input_subject_2,Input_subject_3,Input_subject_4,Input_subject_5,Input_marks_1,Input_marks_2,Input_marks_3,Input_marks_4,Input_marks_5;
+    JButton submit_button,cancel_button;
     EnterMarks(){
 
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/exam.jpg"));
@@ -71,20 +74,60 @@ public class EnterMarks extends JFrame {
         add(Input_subject_1);
 
         Input_subject_2=new JTextField();
-        Input_subject_2.setBounds(50,200,200,20);
+        Input_subject_2.setBounds(50,230,200,20);
         add(Input_subject_2);
 
         Input_subject_3=new JTextField();
-        Input_subject_3.setBounds(50,200,200,20);
+        Input_subject_3.setBounds(50,260,200,20);
         add(Input_subject_3);
 
         Input_subject_4=new JTextField();
-        Input_subject_4.setBounds(50,200,200,20);
+        Input_subject_4.setBounds(50,290,200,20);
         add(Input_subject_4);
 
         Input_subject_5=new JTextField();
-        Input_subject_5.setBounds(50,200,200,20);
+        Input_subject_5.setBounds(50,320,200,20);
         add(Input_subject_5);
+
+        // marks
+        Input_marks_1=new JTextField();
+        Input_marks_1.setBounds(250,200,200,20);
+        add(Input_marks_1);
+
+        Input_marks_2=new JTextField();
+        Input_marks_2.setBounds(250,230,200,20);
+        add(Input_marks_2);
+
+        Input_marks_3=new JTextField();
+        Input_marks_3.setBounds(250,260,200,20);
+        add(Input_marks_3);
+
+        Input_marks_4=new JTextField();
+        Input_marks_4.setBounds(250,290,200,20);
+        add(Input_marks_4);
+
+        Input_marks_5=new JTextField();
+        Input_marks_5.setBounds(250,320,200,20);
+        add(Input_marks_5);
+
+        // Submit Button
+        submit_button = new JButton("Submit");
+        submit_button.setBounds(70,360,150,25);
+        submit_button.setBackground(Color.BLACK);
+        submit_button.setForeground(Color.WHITE);
+        submit_button.addActionListener(this);
+        submit_button.setFont(new Font("Tahoma",Font.BOLD,15));
+        add(submit_button);
+
+        // cancel button design.
+        cancel_button = new JButton("Cancel");
+        cancel_button.setBounds(280,360,150,25);
+        cancel_button.setBackground(Color.BLACK);
+        cancel_button.setForeground(Color.WHITE);
+        cancel_button.addActionListener(this);
+        cancel_button.setFont(new Font("Tahoma",Font.BOLD,15));
+        add(cancel_button);
+
 
 
         setSize(1000,500);
@@ -93,6 +136,26 @@ public class EnterMarks extends JFrame {
 
         getContentPane().setBackground(Color.WHITE);
         setVisible(true);
+    }
+    public void actionPerformed(ActionEvent e){
+        if(e.getSource()==submit_button){
+            try{
+                Conn cn = new Conn();
+                String query1 = "insert into subject values('"+choice_roll_no.getSelectedItem()+"', '"+combo_Semester.getSelectedItem()+"', '"+Input_subject_1.getText()+"', '"+Input_subject_2.getText()+"', '"+Input_subject_3.getText()+"', '"+Input_subject_4.getText()+"', '"+Input_subject_5.getText()+"')";
+                String query2 = "insert into marks values('"+choice_roll_no.getSelectedItem()+"', '"+combo_Semester.getSelectedItem()+"', '"+Input_marks_1.getText()+"', '"+Input_marks_2.getText()+"', '"+Input_marks_3.getText()+"', '"+Input_marks_4.getText()+"', '"+Input_marks_5.getText()+"')";
+
+                cn.s.executeUpdate(query1);
+                cn.s.executeUpdate(query2);
+
+                JOptionPane.showMessageDialog(null,"Marks Inserted Sucessfully");
+                setVisible(false);
+
+            }catch (Exception error){
+                error.printStackTrace();
+            }
+        }else{
+            setVisible(false);
+        }
     }
     public static void main(String[] args) {
         new EnterMarks();
