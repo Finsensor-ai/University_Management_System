@@ -7,37 +7,37 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.sql.ResultSet;
-public class UpdateStudent extends JFrame implements ActionListener {
+public class UpdateTeacher extends JFrame implements ActionListener {
     JTextField Input_Course,Input_Address,Input_Phone,Input_Email,Input_Branch;
-    JLabel roll_Number_Label;
+    JLabel label_Employee_ID;
     JButton submit_button,cancel_button;
-    Choice choice_roll_no;
-    UpdateStudent(){
+    Choice employee_ID;
+    UpdateTeacher(){
         setSize(900,650);
         setLocation(350,50);
         setLayout(null);
 
-        JLabel heading = new JLabel("Update Student Details");
+        JLabel heading = new JLabel("Update Teacher Details");
         heading.setBounds(50,10,500,50);
         heading.setFont(new Font("Tahoma",Font.ITALIC,35));
         add(heading);
 
         // student roll no.
-        JLabel roll_Number_label = new JLabel("Select Roll Number");
+        JLabel roll_Number_label = new JLabel("Select Employee Id");
         roll_Number_label.setBounds(50,100,200,20);
         roll_Number_label.setFont(new Font("Serif",Font.PLAIN,20));
         add(roll_Number_label);
 
-        choice_roll_no = new Choice();
-        choice_roll_no.setBounds(250,100,200,20);
-        add(choice_roll_no);
+        employee_ID = new Choice();
+        employee_ID.setBounds(250,100,200,20);
+        add(employee_ID);
 
         // get roll no. from backend(mysql);
         try{
             Conn cn = new Conn();
-            ResultSet res = cn.s.executeQuery("select * from student");
+            ResultSet res = cn.s.executeQuery("select * from teacher");
             while(res.next()){
-                choice_roll_no.add(res.getString("rollno"));
+                employee_ID.add(res.getString("empId"));
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -53,7 +53,7 @@ public class UpdateStudent extends JFrame implements ActionListener {
 
         // name text field.
 
-       JLabel Input_name = new JLabel();
+        JLabel Input_name = new JLabel();
         Input_name.setBounds(200,150,150,30);
         Input_name.setFont(new Font("Tahoma",Font.PLAIN,18));
         add(Input_name);
@@ -73,16 +73,16 @@ public class UpdateStudent extends JFrame implements ActionListener {
 
 
         // roll number
-        JLabel roll_Number = new JLabel("Roll Number");
+        JLabel roll_Number = new JLabel("Employee Id");
         roll_Number.setBounds(50,200,200,30);
         roll_Number.setFont(new Font("serif",Font.BOLD,20));
         add(roll_Number);
 
         // random roll number Generated.
-        roll_Number_Label = new JLabel();
-        roll_Number_Label.setBounds(200,200,200,30);
-        roll_Number_Label.setFont(new Font("Tahoma",Font.PLAIN,18));
-        add(roll_Number_Label);
+        label_Employee_ID = new JLabel();
+        label_Employee_ID.setBounds(200,200,200,30);
+        label_Employee_ID.setFont(new Font("Tahoma",Font.PLAIN,18));
+        add(label_Employee_ID);
 
         // date of birth
         JLabel DOB = new JLabel("Date of Birth");
@@ -169,7 +169,7 @@ public class UpdateStudent extends JFrame implements ActionListener {
         add(Input_Aadhar);
 
         // Course
-        JLabel course_Label = new JLabel("Course");
+        JLabel course_Label = new JLabel("Education");
         course_Label.setBounds(50,400,200,30);
         course_Label.setFont(new Font("serif",Font.BOLD,20));
         add(course_Label);
@@ -183,7 +183,7 @@ public class UpdateStudent extends JFrame implements ActionListener {
 
 
         // Branch
-        JLabel Branch_Label = new JLabel("Branch");
+        JLabel Branch_Label = new JLabel("Department");
         Branch_Label.setBounds(400,400,200,30);
         Branch_Label.setFont(new Font("serif",Font.BOLD,20));
         add(Branch_Label);
@@ -199,7 +199,7 @@ public class UpdateStudent extends JFrame implements ActionListener {
 
         try{
             Conn cn = new Conn();
-            String query = "select * from student where rollno ='"+choice_roll_no.getSelectedItem()+"'";
+            String query = "select * from teacher where empId ='"+employee_ID.getSelectedItem()+"'";
             ResultSet res = cn.s.executeQuery(query);
             while(res.next()){
                 Input_name.setText(res.getString("name"));
@@ -211,9 +211,9 @@ public class UpdateStudent extends JFrame implements ActionListener {
                 Input_X.setText(res.getString("class_x"));
                 Input_XII.setText(res.getString("class_xii"));
                 Input_Aadhar.setText(res.getString("aadhar"));
-                roll_Number_Label.setText(res.getString("rollno"));
-                Input_Course.setText(res.getString("course"));
-                Input_Branch.setText(res.getString("branch"));
+                label_Employee_ID.setText(res.getString("empId"));
+                Input_Course.setText(res.getString("education"));
+                Input_Branch.setText(res.getString("department"));
 
             }
         }catch(Exception e){
@@ -221,12 +221,12 @@ public class UpdateStudent extends JFrame implements ActionListener {
         }
 
         // event lister on Items List. (Drop Down Menu).
-        choice_roll_no.addItemListener(new ItemListener() {
+        employee_ID.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 try{
                     Conn cn = new Conn();
-                    String query = "select * from student where rollno ='"+choice_roll_no.getSelectedItem()+"'";
+                    String query = "select * from teacher where empId ='"+employee_ID.getSelectedItem()+"'";
                     ResultSet res = cn.s.executeQuery(query);
                     while(res.next()){
                         Input_name.setText(res.getString("name"));
@@ -238,9 +238,9 @@ public class UpdateStudent extends JFrame implements ActionListener {
                         Input_X.setText(res.getString("class_x"));
                         Input_XII.setText(res.getString("class_xii"));
                         Input_Aadhar.setText(res.getString("aadhar"));
-                        roll_Number_Label.setText(res.getString("rollno"));
-                        Input_Course.setText(res.getString("course"));
-                        Input_Branch.setText(res.getString("branch"));
+                        label_Employee_ID.setText(res.getString("empId"));
+                        Input_Course.setText(res.getString("education"));
+                        Input_Branch.setText(res.getString("department"));
 
                     }
                 }catch(Exception error){
@@ -273,17 +273,17 @@ public class UpdateStudent extends JFrame implements ActionListener {
     }
     public void actionPerformed(ActionEvent e){
         if(e.getSource()==submit_button){
-            String rollno= roll_Number_Label.getText();
+            String empId= label_Employee_ID.getText();
             String address = Input_Address.getText();
             String phone = Input_Phone.getText();
             String email = Input_Email.getText();
             String course = Input_Course.getText();
             String branch = Input_Branch.getText();
             try{
-                String query = "update student set address='"+address+"', phone='"+phone+"',email='"+email+"',course='"+course+"',branch='"+branch+"' where rollno='"+rollno+"'";
+                String query = "update teacher set address='"+address+"', phone='"+phone+"',email='"+email+"',education='"+course+"',department='"+branch+"' where empId='"+empId+"'";
                 Conn con = new Conn();
                 con.s.executeUpdate(query);
-                JOptionPane.showMessageDialog(null,"Student Details Updated Successfully");
+                JOptionPane.showMessageDialog(null,"Teacher Details Updated Successfully");
                 setVisible(false);
             }catch (Exception error){
                 error.printStackTrace();
@@ -293,6 +293,6 @@ public class UpdateStudent extends JFrame implements ActionListener {
         }
     }
     public static void main(String[] args) {
-        new UpdateStudent();
+        new UpdateTeacher();
     }
 }

@@ -23,7 +23,7 @@ public class Project extends JFrame implements ActionListener {
         nav.add(information);
 
         // nav bar lists items (menu items).
-        JMenuItem faculty_Info = new JMenuItem("New Faculity Information");
+        JMenuItem faculty_Info = new JMenuItem("New Faculty Information");
         faculty_Info.setBackground(Color.WHITE);
         faculty_Info.addActionListener(this);
         information.add(faculty_Info);
@@ -39,7 +39,7 @@ public class Project extends JFrame implements ActionListener {
         nav.add(view_details);
 
         // nav bar lists items (menu items).
-        JMenuItem faculty_Details = new JMenuItem("View Faculity Details");
+        JMenuItem faculty_Details = new JMenuItem("View Faculty Details");
         faculty_Details.setBackground(Color.WHITE);
         faculty_Details.addActionListener(this);
         view_details.add(faculty_Details);
@@ -55,7 +55,7 @@ public class Project extends JFrame implements ActionListener {
         nav.add(leave);
 
         // nav bar lists items (menu items).
-        JMenuItem faculty_Leave = new JMenuItem("Faculity Leave");
+        JMenuItem faculty_Leave = new JMenuItem("Faculty Leave");
         faculty_Leave.setBackground(Color.WHITE);
         leave.add(faculty_Leave);
 
@@ -69,7 +69,7 @@ public class Project extends JFrame implements ActionListener {
         nav.add(leave_Details);
 
         // nav bar lists items (menu items).
-        JMenuItem faculty_Leave_Details = new JMenuItem("Faculity Leave Details");
+        JMenuItem faculty_Leave_Details = new JMenuItem("Faculty Leave Details");
         faculty_Leave_Details.setBackground(Color.WHITE);
         leave_Details.add(faculty_Leave_Details);
 
@@ -100,10 +100,12 @@ public class Project extends JFrame implements ActionListener {
         // nav bar lists items (menu items).
         JMenuItem update_Faculty_Info = new JMenuItem("Update Faculty Details");
         update_Faculty_Info.setBackground(Color.WHITE);
+        update_Faculty_Info.addActionListener(this);
         update_Info.add(update_Faculty_Info);
 
         JMenuItem update_Student_Info = new JMenuItem("Update Student Details");
         update_Student_Info.setBackground(Color.WHITE);
+        update_Student_Info.addActionListener(this);
         update_Info.add(update_Student_Info);
 
 
@@ -173,14 +175,18 @@ public class Project extends JFrame implements ActionListener {
             try{
                 Runtime.getRuntime().exec("notepad.exe");
             }catch (Exception error){}
-        }else if(msg.equals("New Faculity Information")){
+        }else if(msg.equals("New Faculty Information")){
             new AddTeacher();
         }else if(msg.equals("New Student Information")){
             new AddStudent();
-        }else if(msg.equals("View Faculity Details")){
-            new TeacherDetails();
+        } else if(msg.equals("View Faculty Details")){
+                new TeacherDetails();
         }else if(msg.equals("View Student Details")){
             new StudentDetails();
+        }else if(msg.equals("Update Faculty Details")){
+            new UpdateTeacher();
+        }else if(msg.equals("Update Student Details")){
+            new UpdateStudent();
         }
     }
     public static void main(String[] args) {
