@@ -41,7 +41,7 @@ public class StudentDetails extends JFrame implements ActionListener {
         try{
             Conn cn = new Conn();
             ResultSet res = cn.s.executeQuery("select * from student");
-           table.setModel(DbUtils.resultSetToTableModel(res));
+            table.setModel(DbUtils.resultSetToTableModel(res));
         }catch(Exception e){
             e.printStackTrace();
         }
