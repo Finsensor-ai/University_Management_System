@@ -87,6 +87,14 @@ public class StudentDetails extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e){
         if(e.getSource()==search){
 
+            String query = "select * from student where rollno ='"+choice_roll_no.getSelectedItem()+"'";
+            try{
+                Conn cn = new Conn();
+                ResultSet res = cn.s.executeQuery(query);
+                table.setModel(DbUtils.resultSetToTableModel(res));
+            }catch (Exception error){
+                error.printStackTrace();
+            }
         }else if(e.getSource()==print){
             try{
                 table.print();
