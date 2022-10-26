@@ -85,6 +85,7 @@ public class Project extends JFrame implements ActionListener {
         // nav bar lists items (menu items).
         JMenuItem examination_Details = new JMenuItem("Examination Results");
         examination_Details.setBackground(Color.WHITE);
+        examination_Details.addActionListener(this);
         exam.add(examination_Details);
 
         JMenuItem enter_marks = new JMenuItem("Enter Marks");
@@ -190,6 +191,8 @@ public class Project extends JFrame implements ActionListener {
             new UpdateStudent();
         }else if(msg.equals("Enter Marks")){
             new EnterMarks();
+        }else if(msg.equals("Examination Results")){
+            new ExaminationDetails();
         }
     }
     public static void main(String[] args) {

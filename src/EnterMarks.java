@@ -10,7 +10,11 @@ public class EnterMarks extends JFrame implements ActionListener {
     JTextField Input_subject_1,Input_subject_2,Input_subject_3,Input_subject_4,Input_subject_5,Input_marks_1,Input_marks_2,Input_marks_3,Input_marks_4,Input_marks_5;
     JButton submit_button,cancel_button;
     EnterMarks(){
+        setSize(1000,500);
+        setLocation(300,150);
+        setLayout(null);
 
+        getContentPane().setBackground(Color.WHITE);
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/exam.jpg"));
         Image i2 = i1.getImage().getScaledInstance(400,300, Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
@@ -128,13 +132,6 @@ public class EnterMarks extends JFrame implements ActionListener {
         cancel_button.setFont(new Font("Tahoma",Font.BOLD,15));
         add(cancel_button);
 
-
-
-        setSize(1000,500);
-        setLocation(300,150);
-        setLayout(null);
-
-        getContentPane().setBackground(Color.WHITE);
         setVisible(true);
     }
     public void actionPerformed(ActionEvent e){
