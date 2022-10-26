@@ -43,5 +43,16 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Downloads/unZip/University Management System-20221023T173128Z-001/University Management System/Jar/rs2xml.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/Downloads/unZip/University Management System-20221023T173128Z-001/University Management System/Jar/rs2xml.jar!/src" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>
