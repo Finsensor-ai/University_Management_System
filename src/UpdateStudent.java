@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.sql.ResultSet;
 public class UpdateStudent extends JFrame implements ActionListener {
     JTextField Input_Course,Input_Address,Input_Phone,Input_Email,Input_Branch;
@@ -77,7 +79,7 @@ public class UpdateStudent extends JFrame implements ActionListener {
         add(roll_Number);
 
         // random roll number Generated.
-       JLabel roll_Number_Label = new JLabel();
+        roll_Number_Label = new JLabel();
         roll_Number_Label.setBounds(200,200,200,30);
         roll_Number_Label.setFont(new Font("Tahoma",Font.PLAIN,18));
         add(roll_Number_Label);
@@ -218,6 +220,34 @@ public class UpdateStudent extends JFrame implements ActionListener {
             e.printStackTrace();
         }
 
+        // event lister on Items List. (Drop Down Menu).
+        choice_roll_no.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                try{
+                    Conn cn = new Conn();
+                    String query = "select * from student where rollno ='"+choice_roll_no.getSelectedItem()+"'";
+                    ResultSet res = cn.s.executeQuery(query);
+                    while(res.next()){
+                        Input_name.setText(res.getString("name"));
+                        Input_Father_name.setText(res.getString("fname"));
+                        date_DOB_Chooser.setText(res.getString("dob"));
+                        Input_Address.setText(res.getString("address"));
+                        Input_Phone.setText(res.getString("phone"));
+                        Input_Email.setText(res.getString("email"));
+                        Input_X.setText(res.getString("class_x"));
+                        Input_XII.setText(res.getString("class_xii"));
+                        Input_Aadhar.setText(res.getString("aadhar"));
+                        roll_Number_Label.setText(res.getString("rollno"));
+                        Input_Course.setText(res.getString("course"));
+                        Input_Branch.setText(res.getString("branch"));
+
+                    }
+                }catch(Exception error){
+                    error.printStackTrace();
+                }
+            }
+        });
 
         // Submit Button
         submit_button = new JButton("Update");
@@ -242,31 +272,25 @@ public class UpdateStudent extends JFrame implements ActionListener {
         setVisible(true);
     }
     public void actionPerformed(ActionEvent e){
-//        if(e.getSource()==submit_button){
-//            String name = Input_name.getText();
-//            String fname = Input_Father_name.getText();
-//            String rollno= roll_Number_Label.getText();
-//            String dob = ((JTextField) date_DOB_Chooser.getDateEditor().getUiComponent()).getText();
-//            String address = Input_Address.getText();
-//            String phone = Input_Phone.getText();
-//            String email= Input_Email.getText();
-//            String x = Input_X.getText();
-//            String xii = Input_XII.getText();
-//            String aadhar = Input_name.getText();
-//            String course = (String) Combo_Box_course.getSelectedItem();
-//            String branch = (String) Combo_Box_Branch.getSelectedItem();
-//            try{
-//                String query = "insert into student values('"+name+"','"+fname+"','"+rollno+"','"+dob+"','"+address+"','"+phone+"','"+email+"','"+x+"','"+xii+"','"+aadhar+"','"+course+"','"+branch+"')";
-//                Conn con = new Conn();
-//                con.s.executeUpdate(query);
-//                JOptionPane.showMessageDialog(null,"Student Details Inserted Successfully");
-//                setVisible(false);
-//            }catch (Exception error){
-//                error.printStackTrace();
-//            }
-//        }else{
-//            setVisible(false);
-//        }
+        if(e.getSource()==submit_button){
+            String rollno= roll_Number_Label.getText();
+            String address = Input_Address.getText();
+            String phone = Input_Phone.getText();
+            String email = Input_Email.getText();
+            String course = Input_Course.getText();
+            String branch = Input_Branch.getText();
+            try{
+                String query = "update student set address='"+address+"', phone='"+phone+"',email='"+email+"',course='"+course+"',branch='"+branch+"'";
+                Conn con = new Conn();
+                con.s.executeUpdate(query);
+                JOptionPane.showMessageDialog(null,"Student Details Updated Successfully");
+                setVisible(false);
+            }catch (Exception error){
+                error.printStackTrace();
+            }
+        }else{
+            setVisible(false);
+        }
     }
     public static void main(String[] args) {
         new UpdateStudent();
