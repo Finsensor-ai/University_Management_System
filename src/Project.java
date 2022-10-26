@@ -41,10 +41,12 @@ public class Project extends JFrame implements ActionListener {
         // nav bar lists items (menu items).
         JMenuItem faculty_Details = new JMenuItem("View Faculity Details");
         faculty_Details.setBackground(Color.WHITE);
+        faculty_Details.addActionListener(this);
         view_details.add(faculty_Details);
 
         JMenuItem student_Details = new JMenuItem("View Student Details");
         student_Details.setBackground(Color.WHITE);
+        student_Details.addActionListener(this);
         view_details.add(student_Details);
 
         // Leave
@@ -175,6 +177,10 @@ public class Project extends JFrame implements ActionListener {
             new AddTeacher();
         }else if(msg.equals("New Student Information")){
             new AddStudent();
+        }else if(msg.equals("View Faculity Details")){
+            new TeacherDetails();
+        }else if(msg.equals("View Student Details")){
+            new StudentDetails();
         }
     }
     public static void main(String[] args) {

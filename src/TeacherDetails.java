@@ -4,30 +4,30 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
 import net.proteanit.sql.DbUtils;
-public class StudentDetails extends JFrame implements ActionListener {
-    Choice choice_roll_no;
+public class TeacherDetails extends JFrame implements ActionListener {
+    Choice employee_ID;
     JTable table;
     JButton search , print, update,add,cancel;
-    StudentDetails(){
+    TeacherDetails(){
 
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
 
         // DropDown List Label.
-        JLabel heading = new JLabel("Search by Roll Number");
+        JLabel heading = new JLabel("Search by Employee Id");
         heading.setBounds(20,20,150,20);
         add(heading);
 
-        choice_roll_no = new Choice();
-        choice_roll_no.setBounds(180,20,150,20);
-        add(choice_roll_no);
+        employee_ID = new Choice();
+        employee_ID.setBounds(180,20,150,20);
+        add(employee_ID);
 
         // get roll no. from backend(mysql);
         try{
             Conn cn = new Conn();
-            ResultSet res = cn.s.executeQuery("select * from student");
+            ResultSet res = cn.s.executeQuery("select * from teacher");
             while(res.next()){
-                choice_roll_no.add(res.getString("rollno"));
+                employee_ID.add(res.getString("empId"));
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -40,7 +40,7 @@ public class StudentDetails extends JFrame implements ActionListener {
         // Render ALL Details into Table.
         try{
             Conn cn = new Conn();
-            ResultSet res = cn.s.executeQuery("select * from student");
+            ResultSet res = cn.s.executeQuery("select * from teacher");
             table.setModel(DbUtils.resultSetToTableModel(res));
         }catch(Exception e){
             e.printStackTrace();
@@ -87,7 +87,7 @@ public class StudentDetails extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e){
         if(e.getSource()==search){
 
-            String query = "select * from student where rollno ='"+choice_roll_no.getSelectedItem()+"'";
+            String query = "select * from teacher where empId ='"+employee_ID.getSelectedItem()+"'";
             try{
                 Conn cn = new Conn();
                 ResultSet res = cn.s.executeQuery(query);
@@ -103,15 +103,15 @@ public class StudentDetails extends JFrame implements ActionListener {
             }
         }else if(e.getSource()==add){
             setVisible(false);
-            new AddStudent();
+            new AddTeacher();
         }else if(e.getSource()==update){
             setVisible(false);
-            // new UpdateStudent();
+            // new UpdateTeacher();
         }else{
             setVisible(false);
         }
     }
     public static void main(String[] args) {
-        new StudentDetails();
+        new TeacherDetails();
     }
 }
