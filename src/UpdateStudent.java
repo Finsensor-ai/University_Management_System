@@ -280,7 +280,7 @@ public class UpdateStudent extends JFrame implements ActionListener {
             String course = Input_Course.getText();
             String branch = Input_Branch.getText();
             try{
-                String query = "update student set address='"+address+"', phone='"+phone+"',email='"+email+"',course='"+course+"',branch='"+branch+"'";
+                String query = "update student set address='"+address+"', phone='"+phone+"',email='"+email+"',course='"+course+"',branch='"+branch+"' where rollno='"+rollno+"'";
                 Conn con = new Conn();
                 con.s.executeUpdate(query);
                 JOptionPane.showMessageDialog(null,"Student Details Updated Successfully");
