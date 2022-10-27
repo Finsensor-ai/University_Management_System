@@ -3,7 +3,7 @@ import java.awt.*;
 
 public class About extends JFrame {
     About(){
-        setSize(700,600);
+        setSize(700,500);
         setLocation(400,150);
 
         getContentPane().setBackground(Color.WHITE);
@@ -17,13 +17,13 @@ public class About extends JFrame {
         add(image);
         // heading label
         JLabel heading = new JLabel("<html>University<br/>Management System</html>");
-        heading.setBounds(70,20,250,130);
+        heading.setBounds(70,20,300,130);
         heading.setFont(new Font("Tahoma",Font.BOLD,30));
         add(heading);
 
         // creator name
         JLabel creator_name = new JLabel("Developed By: Anish Kumar");
-        creator_name.setBounds(70,220,550,30);
+        creator_name.setBounds(70,220,550,40);
         creator_name.setFont(new Font("Tahoma",Font.BOLD,30));
         add(creator_name);
 
@@ -36,10 +36,12 @@ public class About extends JFrame {
 
         // creator contact
         JLabel creator_Contact = new JLabel("Contact: anishbishnoi@gmail.com");
-        creator_Contact.setBounds(100,340,200,40);
+        creator_Contact.setBounds(70,340,550,40);
         creator_Contact.setFont(new Font("Tahoma",Font.PLAIN,20));
         add(creator_Contact);
 
+
+        setLayout(null);
         //last statement
         setVisible(true);
     }
