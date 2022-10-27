@@ -4,30 +4,30 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
 import net.proteanit.sql.DbUtils;
-public class StudentLeaveDetails extends JFrame implements ActionListener {
-    Choice choice_roll_no;
+public class TeacherLeaveDetails extends JFrame implements ActionListener {
+    Choice choice_employee_ID;
     JTable table;
-    JButton search , print,cancel;
-    StudentLeaveDetails(){
+    JButton search , print, cancel;
+    TeacherLeaveDetails(){
 
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
 
         // DropDown List Label.
-        JLabel heading = new JLabel("Search by Roll Number");
+        JLabel heading = new JLabel("Search by Employee Id");
         heading.setBounds(20,20,150,20);
         add(heading);
 
-        choice_roll_no = new Choice();
-        choice_roll_no.setBounds(180,20,150,20);
-        add(choice_roll_no);
+        choice_employee_ID = new Choice();
+        choice_employee_ID.setBounds(180,20,150,20);
+        add(choice_employee_ID);
 
         // get roll no. from backend(mysql);
         try{
             Conn cn = new Conn();
-            ResultSet res = cn.s.executeQuery("select * from student");
+            ResultSet res = cn.s.executeQuery("select * from teacher");
             while(res.next()){
-                choice_roll_no.add(res.getString("rollno"));
+                choice_employee_ID.add(res.getString("empId"));
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -40,7 +40,7 @@ public class StudentLeaveDetails extends JFrame implements ActionListener {
         // Render ALL Details into Table.
         try{
             Conn cn = new Conn();
-            ResultSet res = cn.s.executeQuery("select * from studentleave");
+            ResultSet res = cn.s.executeQuery("select * from teacherleave");
             table.setModel(DbUtils.resultSetToTableModel(res));
         }catch(Exception e){
             e.printStackTrace();
@@ -78,7 +78,7 @@ public class StudentLeaveDetails extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e){
         if(e.getSource()==search){
 
-            String query = "select * from studentleave where rollno ='"+choice_roll_no.getSelectedItem()+"'";
+            String query = "select * from teacherleave where empId ='"+choice_employee_ID.getSelectedItem()+"'";
             try{
                 Conn cn = new Conn();
                 ResultSet res = cn.s.executeQuery(query);
@@ -97,6 +97,6 @@ public class StudentLeaveDetails extends JFrame implements ActionListener {
         }
     }
     public static void main(String[] args) {
-        new StudentLeaveDetails();
+        new TeacherLeaveDetails();
     }
 }
