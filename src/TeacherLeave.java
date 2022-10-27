@@ -6,11 +6,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 
-public class StudentLeave extends JFrame implements ActionListener {
+public class TeacherLeave extends JFrame implements ActionListener {
     Choice choice_roll_no,choice_time;
     JDateChooser date_chooser;
     JButton submit_button,cancel_button;
-    StudentLeave(){
+    TeacherLeave(){
         setSize(500,550);
         setLocation(550,100);
         setLayout(null);
@@ -110,6 +110,6 @@ public class StudentLeave extends JFrame implements ActionListener {
         }
     }
     public static void main(String[] args) {
-        new StudentLeave();
+        new TeacherLeave();
     }
 }
