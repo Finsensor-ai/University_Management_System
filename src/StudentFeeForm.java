@@ -1,12 +1,16 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.sql.ResultSet;
 
-public class StudentFeeForm extends JFrame {
+public class StudentFeeForm extends JFrame implements ActionListener {
     Choice choice_roll_no;
     JComboBox Combo_Box_course,Combo_Box_Branch,combo_Semester;
+    JLabel Label_Total;
+    JButton update_button,pay_button,cancel_button;
  StudentFeeForm(){
      setSize(900,500);
      setLocation(300,100);
@@ -114,7 +118,7 @@ public class StudentFeeForm extends JFrame {
 
      // drop down list.
 
-     String course[] = {"BCA","MCA","B.Tech","M.Tech","Bsc","MSC","MBA","MCom","MA","BA"};
+     String course[] = {"BCA","MCA","BTech","MTech","Bsc","MSC","MBA","MCom","MA","BA"};
      Combo_Box_course = new JComboBox(course);
      Combo_Box_course.setBounds(200,180,150,20);
      Combo_Box_course.setBackground(Color.WHITE);
@@ -143,18 +147,88 @@ public class StudentFeeForm extends JFrame {
      add(semester_Label);
 
 
-     String[] semester={"1st Semester","2nd Semester","3rd Semester","4th Semester","5th Semester","6th Semester","7th Semester","8th Semester"};
+     String[] semester={"Semester1","Semester2","Semester3","Semester4","Semester5","Semester6","Semester7","Semester8"};
      combo_Semester = new JComboBox(semester);
      combo_Semester.setBounds(200,260,150,20);
      combo_Semester.setBackground(Color.WHITE);
      add(combo_Semester);
 
+     // total
+     JLabel total_Label = new JLabel("Total Payable");
+     total_Label.setBounds(40,300,150,20);
+     total_Label.setFont(new Font("Tahoma",Font.BOLD,16));
+     add(total_Label);
 
+     // total
+      Label_Total = new JLabel();
+     Label_Total.setBounds(200,300,150,20);
+     Label_Total.setFont(new Font("Tahoma",Font.BOLD,16));
+     add(Label_Total);
+
+
+     // update Button
+     update_button = new JButton("Update");
+     update_button.setBounds(30,380,100,25);
+     update_button.setBackground(Color.BLACK);
+     update_button.setForeground(Color.WHITE);
+     update_button.addActionListener(this);
+     update_button.setFont(new Font("Tahoma",Font.BOLD,15));
+     add(update_button);
+
+     // pay fee button design.
+     pay_button = new JButton("Pay Fee");
+     pay_button.setBounds(150,380,100,25);
+     pay_button.setBackground(Color.BLACK);
+     pay_button.setForeground(Color.WHITE);
+     pay_button.addActionListener(this);
+     pay_button.setFont(new Font("Tahoma",Font.BOLD,15));
+     add(pay_button);
+
+     // cancel button design.
+     cancel_button = new JButton("Back");
+     cancel_button.setBounds(270,380,100,25);
+     cancel_button.setBackground(Color.BLACK);
+     cancel_button.setForeground(Color.WHITE);
+     cancel_button.addActionListener(this);
+     cancel_button.setFont(new Font("Tahoma",Font.BOLD,15));
+     add(cancel_button);
 
      // last statement
      setVisible(true);
  }
 
+ public void actionPerformed(ActionEvent e){
+     if(e.getSource()==update_button){
+         String course = (String) Combo_Box_course.getSelectedItem();
+         String semester = (String) combo_Semester.getSelectedItem();
+
+         try{
+            Conn cn = new Conn();
+            ResultSet res = cn.s.executeQuery("select * from fee where course='"+course+"'");
+            while(res.next()){
+                Label_Total.setText(res.getString(semester));
+            }
+         }catch (Exception err){
+             err.printStackTrace();
+         }
+     }else if(e.getSource()==pay_button){
+
+         String rollno = choice_roll_no.getSelectedItem();
+         String course = (String) Combo_Box_course.getSelectedItem();
+         String semester = (String) combo_Semester.getSelectedItem();
+         String brach = (String) Combo_Box_Branch.getSelectedItem();
+         String total = Label_Total.getText();
+         try{
+             Conn cn = new Conn();
+             String query="insert"
+             cn.s.executeUpdate(query);
+         }catch (Exception err){
+             err.printStackTrace();
+         }
+     }else{
+         setVisible(false);
+     }
+ }
     public static void main(String[] args) {
         new StudentFeeForm();
     }
