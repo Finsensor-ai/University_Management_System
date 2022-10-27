@@ -119,6 +119,7 @@ public class Project extends JFrame implements ActionListener {
         // nav bar lists items (menu items).
         JMenuItem fee_Structure = new JMenuItem("Fee Structure");
         fee_Structure.setBackground(Color.WHITE);
+        fee_Structure.addActionListener(this);
         fee.add(fee_Structure);
 
         JMenuItem fee_Form = new JMenuItem("Student Fee Form");
@@ -141,10 +142,21 @@ public class Project extends JFrame implements ActionListener {
         calc.addActionListener(this);
         utility.add(calc);
 
+        // about
+        JMenu about = new JMenu("About");
+        about.setForeground(Color.BLUE);
+        nav.add(about);
+
+        // nav bar lists items (menu items).
+        JMenuItem ab = new JMenuItem("Exit");
+        ab.addActionListener(this);
+        ab.setBackground(Color.WHITE);
+        about.add(ab);
+
         // Exit
 
         JMenu exit = new JMenu("Exit");
-        exit.setForeground(Color.BLUE);
+        exit.setForeground(Color.RED);
         nav.add(exit);
 
         // nav bar lists items (menu items).
@@ -193,6 +205,8 @@ public class Project extends JFrame implements ActionListener {
             new EnterMarks();
         }else if(msg.equals("Examination Results")){
             new ExaminationDetails();
+        }else if(msg.equals("Fee Structure")){
+            new FeeStructure();
         }
     }
     public static void main(String[] args) {
