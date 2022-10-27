@@ -71,10 +71,12 @@ public class Project extends JFrame implements ActionListener {
         // nav bar lists items (menu items).
         JMenuItem faculty_Leave_Details = new JMenuItem("Faculty Leave Details");
         faculty_Leave_Details.setBackground(Color.WHITE);
+        faculty_Leave_Details.addActionListener(this);
         leave_Details.add(faculty_Leave_Details);
 
         JMenuItem student_Leave_Details = new JMenuItem("Student Leave Details");
         student_Leave_Details.setBackground(Color.WHITE);
+        student_Leave_Details.addActionListener(this);
         leave_Details.add(student_Leave_Details);
 
         // Exams
@@ -212,6 +214,10 @@ public class Project extends JFrame implements ActionListener {
             new About();
         }else if(msg.equals("Student Fee Form")){
             new StudentFeeForm();
+        }else if(msg.equals("Faculty Leave Details")){
+            new TeacherLeave();
+        }else if(msg.equals("Student Leave Details")){
+            new StudentLeave();
         }
     }
     public static void main(String[] args) {

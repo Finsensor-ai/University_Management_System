@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 
 public class TeacherLeave extends JFrame implements ActionListener {
-    Choice choice_roll_no,choice_time;
+    Choice choice_Employee_ID,choice_time;
     JDateChooser date_chooser;
     JButton submit_button,cancel_button;
     TeacherLeave(){
@@ -18,27 +18,27 @@ public class TeacherLeave extends JFrame implements ActionListener {
         getContentPane().setBackground(Color.WHITE);
 
         // heading
-        JLabel heading = new JLabel("Apply Leave (Student)");
+        JLabel heading = new JLabel("Apply Leave (Teacher)");
         heading.setBounds(40,50,300,30);
         heading.setFont(new Font("Tahoma",Font.BOLD,20));
         add(heading);
 
         // DropDown List Label.
-        JLabel rollno_Label = new JLabel("Search by Roll Number");
+        JLabel rollno_Label = new JLabel("Search by Employee Id");
         rollno_Label.setBounds(60,100,200,20);
         rollno_Label.setFont(new Font("Tahoma",Font.PLAIN,18));
         add(rollno_Label);
 
-        choice_roll_no = new Choice();
-        choice_roll_no.setBounds(60,130,200,20);
-        add(choice_roll_no);
+        choice_Employee_ID = new Choice();
+        choice_Employee_ID.setBounds(60,130,200,20);
+        add(choice_Employee_ID);
 
         // get roll no. from backend(mysql);
         try{
             Conn cn = new Conn();
-            ResultSet res = cn.s.executeQuery("select * from student");
+            ResultSet res = cn.s.executeQuery("select * from teacher");
             while(res.next()){
-                choice_roll_no.add(res.getString("rollno"));
+                choice_Employee_ID.add(res.getString("empId"));
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -91,11 +91,11 @@ public class TeacherLeave extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e){
         if(e.getSource()==submit_button){
 
-            String rollno = choice_roll_no.getSelectedItem();
+            String empId = choice_Employee_ID.getSelectedItem();
             String date = ((JTextField) date_chooser.getDateEditor().getUiComponent()).getText();
             String duration = choice_time.getSelectedItem();
 
-            String query = "insert into studentleave values('"+rollno+"', '"+date+"', '"+duration+"')";
+            String query = "insert into teacherleave values('"+empId+"', '"+date+"', '"+duration+"')";
 
             try {
                 Conn c = new Conn();
