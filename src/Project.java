@@ -124,6 +124,7 @@ public class Project extends JFrame implements ActionListener {
 
         JMenuItem fee_Form = new JMenuItem("Student Fee Form");
         fee_Form.setBackground(Color.WHITE);
+        fee_Form.addActionListener(this);
         fee.add(fee_Form);
 
         // Utility
@@ -209,6 +210,8 @@ public class Project extends JFrame implements ActionListener {
             new FeeStructure();
         }else if(msg.equals("About")){
             new About();
+        }else if(msg.equals("Student Fee Form")){
+            new StudentFeeForm();
         }
     }
     public static void main(String[] args) {
