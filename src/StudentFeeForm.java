@@ -216,12 +216,14 @@ public class StudentFeeForm extends JFrame implements ActionListener {
          String rollno = choice_roll_no.getSelectedItem();
          String course = (String) Combo_Box_course.getSelectedItem();
          String semester = (String) combo_Semester.getSelectedItem();
-         String brach = (String) Combo_Box_Branch.getSelectedItem();
+         String branch = (String) Combo_Box_Branch.getSelectedItem();
          String total = Label_Total.getText();
          try{
              Conn cn = new Conn();
-             String query="insert"
+             String query="insert into collegefee values('"+rollno+"','"+course+"','"+branch+"','"+semester+"','"+total+"')";
              cn.s.executeUpdate(query);
+             JOptionPane.showMessageDialog(null,"College fee submitted successfully");
+             setVisible(false);
          }catch (Exception err){
              err.printStackTrace();
          }
