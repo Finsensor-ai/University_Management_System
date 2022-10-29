@@ -9,7 +9,7 @@ It is made with PROPER CODING and NO DRAG AND DROP
 ---------------------------------------------------------------------------------------------------------- 
 # For Source Code, Clone repository from Github
 https://github.com/anishkumar127/University_Management_System
-<img src="video/Home.mp4" />
+<img src="video/Home.mp4" alt="test"/>
 ...
 <img src="https://user-images.githubusercontent.com/77631750/198825176-ae9d63e5-f694-4d3b-bf7c-d5624497f59b.mp4" />
 --
