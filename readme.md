@@ -13,7 +13,7 @@ https://github.com/anishkumar127/University_Management_System
 
 ## Home Screen Video Preview and Add Student and Add Teacher
 
-[![Home Screen Preview & Login Screen & Add Student & Teacher](https://img.youtube.com/vi/mvTPn_qbHvw/hqdefault.jpg)](https://www.youtube.com/watch?v=mvTPn_qbHvw)
+[![Home Screen Preview & Login Screen & Add Student & Teacher](https://img.youtube.com/vi/mvTPn_qbHvw/maxresdefault.jpg)](https://www.youtube.com/watch?v=mvTPn_qbHvw)
 
 [![Fee Pay - Fee Details](https://img.youtube.com/vi/TjdEWf6nz0c/maxresdefault.jpg)](https://www.youtube.com/watch?v=TjdEWf6nz0c)
 
