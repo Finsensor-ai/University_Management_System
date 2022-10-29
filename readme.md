@@ -12,10 +12,17 @@ https://github.com/anishkumar127/University_Management_System
 
 
 
-
+[Home Screen Preview](https://user-images.githubusercontent.com/77631750/198825168-c0dc7964-8c2e-452a-84bc-3c64656d401e.mp4)
 https://user-images.githubusercontent.com/77631750/198825168-c0dc7964-8c2e-452a-84bc-3c64656d401e.mp4
 
+<div>
+<img src="video/Home.mp4" alt="home"/>
+</div>
+[![Watch the video](video/Home.mp4)](video/Home.mp4)
+.....
+[![Watch the video](https://user-images.githubusercontent.com/77631750/198825176-ae9d63e5-f694-4d3b-bf7c-d5624497f59b.mp4)](https://user-images.githubusercontent.com/77631750/198825176-ae9d63e5-f694-4d3b-bf7c-d5624497f59b.mp4)
 
+---
 
 https://user-images.githubusercontent.com/77631750/198825176-ae9d63e5-f694-4d3b-bf7c-d5624497f59b.mp4
 
