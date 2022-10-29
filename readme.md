@@ -13,9 +13,10 @@ https://github.com/anishkumar127/University_Management_System
 
 --
 
-[![Watch the video](https://i.ytimg.com/an_webp/mvTPn_qbHvw/mqdefault_6s.webp?du=3000&sqp=CNT885oG&rs=AOn4CLCye8ipP2s5Gx5hR6d6zlPLzmdK4w](https://www.youtube.com/watch?v=mvTPn_qbHvw)
----
-
+[![Watch the video](https://www.youtube.com/watch?v=mvTPn_qbHvw)
+--
+[![Watch the video](https://img.youtube.com/vi/T-D1KVIuvjA/maxresdefault.jpg)](https://www.youtube.com/watch?v=mvTPn_qbHvw)
+==
 https://user-images.githubusercontent.com/77631750/198825176-ae9d63e5-f694-4d3b-bf7c-d5624497f59b.mp4
 
 
