@@ -19,6 +19,12 @@ https://github.com/anishkumar127/University_Management_System
 ==
 [<img src="https://i.ytimg.com/vi/Hc79sDi3f0U/maxresdefault.jpg" width="50%">](https://www.youtube.com/watch?v=mvTPn_qbHvw "Now in Android: 55")
 ===
+[![Now in Android: 55]          // Title
+(https://i.ytimg.com/vi/Hc79sDi3f0U/maxresdefault.jpg)] // Thumbnail
+
+[//]: # (&#40;https://www.youtube.com/watch?v=Hc79sDi3f0U "Now in Android: 55"&#41;   )
+[![Watch the video](https://img.youtube.com/vi/mvTPn_qbHvw/maxresdefault.jpg)](https://www.youtube.com/watch?v=mvTPn_qbHvw)
+==
 https://user-images.githubusercontent.com/77631750/198825176-ae9d63e5-f694-4d3b-bf7c-d5624497f59b.mp4
 
 
