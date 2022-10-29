@@ -9,23 +9,11 @@ It is made with PROPER CODING and NO DRAG AND DROP
 ---------------------------------------------------------------------------------------------------------- 
 # For Source Code, Clone repository from Github
 https://github.com/anishkumar127/University_Management_System
-<img src="video/Home.mp4" alt="test"/>
-...
-<img src="https://user-images.githubusercontent.com/77631750/198825176-ae9d63e5-f694-4d3b-bf7c-d5624497f59b.mp4" />
+
+
 --
-<img src="77631750/198825176-ae9d63e5-f694-4d3b-bf7c-d5624497f59b.mp4" />
 
-
-[Home Screen Preview](https://user-images.githubusercontent.com/77631750/198825168-c0dc7964-8c2e-452a-84bc-3c64656d401e.mp4)
-https://user-images.githubusercontent.com/77631750/198825168-c0dc7964-8c2e-452a-84bc-3c64656d401e.mp4
-
-<div>
-<img src="video/Home.mp4" alt="home"/>
-</div>
-[![Watch the video](video/Home.mp4)](video/Home.mp4)
-.....
-[![Watch the video](https://user-images.githubusercontent.com/77631750/198825176-ae9d63e5-f694-4d3b-bf7c-d5624497f59b.mp4)](https://user-images.githubusercontent.com/77631750/198825176-ae9d63e5-f694-4d3b-bf7c-d5624497f59b.mp4)
-
+[![Watch the video](https://i.ytimg.com/an_webp/mvTPn_qbHvw/mqdefault_6s.webp?du=3000&sqp=CNT885oG&rs=AOn4CLCye8ipP2s5Gx5hR6d6zlPLzmdK4w](https://www.youtube.com/watch?v=mvTPn_qbHvw)
 ---
 
 https://user-images.githubusercontent.com/77631750/198825176-ae9d63e5-f694-4d3b-bf7c-d5624497f59b.mp4
